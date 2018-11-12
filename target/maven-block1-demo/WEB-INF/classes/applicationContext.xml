@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<import resource="applicationContext-bcos.xml" />
+
+	<bean id="bcosapp" class="com.block.service.app.BcosApp">
+		<property name="gasPrice" value="99999999999" />
+		<property name="gasLimited" value="9999999999999" />
+		<property name="initialValue" value="0" />
+	</bean>
+	
+	<bean id="fiscoBcosService" class="com.block.service.FiscoBcosService" init-method="init">
+		<property name="bcosapp" ref="bcosapp"></property>
+	</bean>
+
+	<bean id="responseUtil" class="com.block.response.ResponseUtil"></bean>
+
+</beans>
